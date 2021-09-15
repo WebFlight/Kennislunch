@@ -12,18 +12,33 @@ package myfirstmodule.actions;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
 
-public class KennislunchTest extends CustomJavaAction<java.lang.Boolean>
+public class KennislunchTest extends CustomJavaAction<java.lang.String>
 {
-	public KennislunchTest(IContext context)
+	private java.lang.String Name;
+
+	public KennislunchTest(IContext context, java.lang.String Name)
 	{
 		super(context);
+		this.Name = Name;
 	}
 
 	@java.lang.Override
-	public java.lang.Boolean executeAction() throws Exception
+	public java.lang.String executeAction() throws Exception
 	{
 		// BEGIN USER CODE
-		throw new com.mendix.systemwideinterfaces.MendixRuntimeException("Java action was not implemented");
+
+		String messageToReturn = new String();
+		
+		if (Name.equals(null) || Name.equals("")) {
+			messageToReturn = "Doe naam invoeren dan!";
+		}
+		else if (Name.equals("Joost")) {
+			messageToReturn = "Ik ga bier halen!";
+		} else {
+			messageToReturn = "Ik blijf lekker zitten, Joost haalt toch al bier!";
+		}
+		
+		return messageToReturn;
 		// END USER CODE
 	}
 
